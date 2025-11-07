@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The ultimate Cristiano Ronaldo fan site featuring biography, career achievements, photo gallery, statistics, and latest news about CR7.">
+    <meta name="keywords" content="Cristiano Ronaldo, CR7, football, soccer, biography, achievements, gallery, statistics">
+    <meta name="author" content="CR7 Fanatic Zone">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="CR7 Fanatic Zone - The Ultimate Cristiano Ronaldo Fan Site">
+    <meta property="og:description" content="Explore the legendary career of Cristiano Ronaldo with exclusive content, photo gallery, and achievements.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=1200&h=630&fit=crop">
+    
+    <title>CR7 Fanatic Zone - The Ultimate Cristiano Ronaldo Fan Site</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-color: #d4af37;
+            --secondary-color: #1a1a2e;
+            --accent-color: #16213e;
+            --text-light: #ffffff;
+            --text-dark: #333333;
+            --bg-light: #f8f9fa;
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--bg-light);
+        }
+        
+        /* Navigation */
+        nav {
+            background: var(--secondary-color);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        nav .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+        
+        nav a:hover {
+            color: var(--primary-color);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--accent-color) 100%);
+            color: var(--text-light);
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=1920&q=80') center/cover;
+            opacity: 0.15;
+            z-index: 0;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        /* Section Titles */
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--primary-color);
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+        
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            color: #666;
+        }
+        
+        /* Biography Section */
+        .bio-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin: 3rem 0;
+        }
+        
+        .bio-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: start;
+        }
+        
+        .bio-image {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        
+        .bio-text h3 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+        
+        .bio-text p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+            color: #555;
+        }
+        
+        /* Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            cursor: pointer;
+            aspect-ratio: 4/3;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            padding: 1.5rem;
+            transform: translateY(100%);
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+        
+        .gallery-overlay h4 {
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+        
+        .gallery-overlay p {
+            color: #ddd;
+            font-size: 0.9rem;
+        }
+        
+        /* Achievements */
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .achievement-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .achievement-card h4 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .achievement-card ul {
+            list-style: none;
+            color: #555;
+        }
+        
+        .achievement-card li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .achievement-card li:last-child {
+            border-bottom: none;
+        }
+        
+        /* AdSense Placeholder */
+        .ad-container {
+            margin: 3rem 0;
+            padding: 2rem;
+            background: #f0f0f0;
+            border-radius: 10px;
+            text-align: center;
+            min-height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed #ccc;
+        }
+        
+        .ad-placeholder {
+            color: #999;
+            font-size: 1.1rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--secondary-color);
+            color: var(--text-light);
+            padding: 3rem 2rem 1rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .footer-section p,
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            line-height: 1.8;
+        }
+        
+        .footer-section a:hover {
+            color: var(--primary-color);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #444;
+            color: #999;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            nav ul {
+                gap: 1rem;
+            }
+            
+            .bio-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="#" class="logo">CR7</a>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#biography">Biography</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#achievements">Achievements</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>CRISTIANO RONALDO</h1>
+            <p>The GOAT - Five-time Ballon d'Or winner, goal-scoring machine, and one of the greatest football players of all time. Witness the legend, passion, and unmatched dedication of CR7.</p>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="container">
+        <h2 class="section-title">Career Statistics</h2>
+        <p class="section-subtitle">Record-breaking numbers that define greatness</p>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">850+</div>
+                <div class="stat-label">Career Goals</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">5</div>
+                <div class="stat-label">Ballon d'Or Awards</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">32</div>
+                <div class="stat-label">Major Trophies</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">140</div>
+                <div class="stat-label">International Goals</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ad Space 1 -->
+    <div class="container">
+        <div class="ad-container">
+            <div class="ad-placeholder">
+                <!-- Replace this with your Google AdSense code -->
+                Google AdSense Ad Unit Here
+                <br><small>Replace this div with your ad code</small>
+            </div>
+        </div>
+    </div>
+
+    <!-- Biography Section -->
+    <section id="biography" class="container">
+        <h2 class="section-title">Biography</h2>
+        <p class="section-subtitle">The journey of a legend from Madeira to global icon</p>
+        
+        <div class="bio-section">
+            <div class="bio-content">
+                <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=400&h=500&fit=crop" alt="Cristiano Ronaldo" class="bio-image">
+                <div class="bio-text">
+                    <h3>Early Life</h3>
+                    <p>Cristiano Ronaldo dos Santos Aveiro was born on February 5, 1985, in Funchal, Madeira, Portugal. Growing up in a humble household, Ronaldo showed exceptional talent from a young age, playing for amateur team Andorinha where his father worked as kit man.</p>
+                    
+                    <h3>Rise to Stardom</h3>
+                    <p>At age 12, Ronaldo moved to Lisbon to join Sporting CP's youth academy. His incredible performances caught the attention of Manchester United, where he signed in 2003 at just 18 years old. Under Sir Alex Ferguson, Ronaldo transformed from a talented winger into one of the world's best players.</p>
+                    
+                    <h3>Global Icon</h3>
+                    <p>After winning his first Ballon d'Or with Manchester United in 2008, Ronaldo joined Real Madrid for a then-world record fee. At Madrid, he became the club's all-time leading scorer with 450 goals in 438 appearances. His rivalry with Lionel Messi pushed both players to unprecedented heights.</p>
+                    
+                    <h3>Continued Excellence</h3>
+                    <p>Following successful stints at Juventus and a return to Manchester United, Ronaldo continues to defy age and expectations. His dedication to fitness, work ethic, and goal-scoring prowess have made him an inspiration to millions worldwide.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ad Space 2 -->
+    <div class="container">
+        <div class="ad-container">
+            <div class="ad-placeholder">
+                <!-- Replace this with your Google AdSense code -->
+                Google AdSense Ad Unit Here
+                <br><small>Replace this div with your ad code</small>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="container">
+        <h2 class="section-title">Photo Gallery</h2>
+        <p class="section-subtitle">Iconic moments captured in time</p>
+        
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=600&h=450&fit=crop" alt="CR7 celebrating">
+                <div class="gallery-overlay">
+                    <h4>Champions League Glory</h4>
+                    <p>Celebrating another European triumph</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&h=450&fit=crop" alt="CR7 in action">
+                <div class="gallery-overlay">
+                    <h4>Iconic Free Kick</h4>
+                    <p>Master of the set piece</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1560272564-c83b66b1ad12?w=600&h=450&fit=crop" alt="CR7 Portugal">
+                <div class="gallery-overlay">
+                    <h4>Portugal Captain</h4>
+                    <p>Leading the national team to glory</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1506663909600-9a85b22c9295?w=600&h=450&fit=crop" alt="CR7 training">
+                <div class="gallery-overlay">
+                    <h4>Training Excellence</h4>
+                    <p>Dedication and hard work</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=600&h=450&fit=crop" alt="CR7 trophy">
+                <div class="gallery-overlay">
+                    <h4>Trophy Collection</h4>
+                    <p>A career filled with silverware</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9?w=600&h=450&fit=crop" alt="CR7 Siuuu">
+                <div class="gallery-overlay">
+                    <h4>Signature Celebration</h4>
+                    <p>The famous SIUUU!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ad Space 3 -->
+    <div class="container">
+        <div class="ad-container">
+            <div class="ad-placeholder">
+                <!-- Replace this with your Google AdSense code -->
+                Google AdSense Ad Unit Here
+                <br><small>Replace this div with your ad code</small>
+            </div>
+        </div>
+    </div>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="container">
+        <h2 class="section-title">Major Achievements</h2>
+        <p class="section-subtitle">A trophy cabinet that speaks volumes</p>
+        
+        <div class="achievements-grid">
+            <div class="achievement-card">
+                <h4>Individual Awards</h4>
+                <ul>
+                    <li>5× Ballon d'Or (2008, 2013, 2014, 2016, 2017)</li>
+                    <li>4× European Golden Shoe</li>
+                    <li>UEFA Men's Player of the Year (3×)</li>
+                    <li>FIFA World Player of the Year</li>
+                    <li>PFA Players' Player of the Year (2×)</li>
+                </ul>
+            </div>
+            
+            <div class="achievement-card">
+                <h4>Club Trophies</h4>
+                <ul>
+                    <li>5× UEFA Champions League</li>
+                    <li>7× League Titles (England, Spain, Italy)</li>
+                    <li>2× Copa América (Spain)</li>
+                    <li>2× FA Cup</li>
+                    <li>5× FIFA Club World Cup</li>
+                </ul>
+            </div>
+            
+            <div class="achievement-card">
+                <h4>International Success</h4>
+                <ul>
+                    <li>UEFA Euro 2016 Champion</li>
+                    <li>UEFA Nations League 2019 Champion</li>
+                    <li>200+ International Appearances</li>
+                    <li>All-time Top Scorer for Portugal</li>
+                    <li>All-time Top International Goalscorer</li>
+                </ul>
+            </div>
+            
+            <div class="achievement-card">
+                <h4>Records & Milestones</h4>
+                <ul>
+                    <li>Most goals in Champions League history</li>
+                    <li>Most international goals in football history</li>
+                    <li>Real Madrid's all-time top scorer</li>
+                    <li>First player to score 100 European Cup goals</li>
+                    <li>Only player to win leagues in 3 different countries</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="container">
+        <h2 class="section-title">Contact & Follow</h2>
+        <p class="section-subtitle">Stay connected with CR7 Fanatic Zone</p>
+        
+        <div class="bio-section">
+            <div style="text-align: center; padding: 2rem;">
+                <p style="margin-bottom: 1.5rem; font-size: 1.1rem;">For inquiries, collaborations, or to share your CR7 moments with our community:</p>
+                <p style="margin-bottom: 0.5rem;"><strong>Email:</strong> contact@cr7fanaticzone.com</p>
+                <p style="margin-bottom: 0.5rem;"><strong>Follow us on social media</strong> for daily CR7 updates, highlights, and exclusive content!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About CR7 Fanatic Zone</h3>
+                <p>CR7 Fanatic Zone is a dedicated fan website celebrating the life, career, and achievements of Cristiano Ronaldo. We are not affiliated with CR7 or any official organizations.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="#home">Home</a>
+                <a href="#biography">Biography</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#achievements">Achievements</a>
+                <a href="#contact">Contact</a>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#terms">Terms of Service</a>
+                <a href="#disclaimer">Disclaimer</a>
+                <a href="#cookies">Cookie Policy</a>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Privacy Policy Summary</h3>
+                <p>This website uses cookies and Google AdSense to provide the best user experience and support our operations. We respect your privacy and do not collect personal information without consent. By using this site, you agree to our use of cookies for analytics and advertising purposes.</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 CR7 Fanatic Zone. All rights reserved. This is an unofficial fan site.</p>
+            <p>Images from Unsplash. Stats and information updated regularly.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('.stat-card, .achievement-card, .gallery-item, .bio-section').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
